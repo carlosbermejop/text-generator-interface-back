@@ -1,0 +1,29 @@
+{
+  "name": "text-generator-interface-back",
+  "version": "1.0.0",
+  "type": "module",
+  "repository": "git@github.com:carlosbermejop/text-generator-interface-back.git",
+  "author": "Carlos Bermejo Pérez <carlos.bermejo@oup.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./index.js",
+    "start:dev": "yarn run nodemon --exec yarn start",
+    "test": "jest",
+    "test:dev": "jest --watch"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "babel-jest": "^27.4.5",
+    "jest": "^27.4.5",
+    "nodemon": "^2.0.15",
+    "regenerator-runtime": "^0.13.9",
+    "supertest": "^6.1.6"
+  }
+}

@@ -14,7 +14,7 @@ export const checkHealth = (req, res) => {
 
 const whitelist = [
   "http://localhost:3000",
-  "http://carlosbermejop.github.io/text-generator-interface-front/",
+  "https://carlosbermejop.github.io/text-generator-interface-front/",
 ];
 
 /* istanbul ignore next */

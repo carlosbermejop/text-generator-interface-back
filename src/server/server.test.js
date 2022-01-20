@@ -17,7 +17,7 @@ describe("Server - Basic unit tests", () => {
     };
 
     await greeting(req, res);
-    expect(res.text).toBe("Hello World!");
+    expect(res.text).toBe("Hi stranger!");
   });
 
   it("should return a customized greeting in the response when called with a name", async () => {

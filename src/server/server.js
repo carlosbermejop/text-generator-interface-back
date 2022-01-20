@@ -2,7 +2,7 @@ import express from "express";
 import { setupEnvVariables } from "./config/setup.js";
 
 export const greeting = (req, res) => {
-  res.send("Hello World!");
+  res.send(req?.params?.user ? `Hello ${req.params.user}!` : "Hello World!");
 };
 
 export const checkHealth = (req, res) => {
@@ -13,9 +13,9 @@ export const checkHealth = (req, res) => {
 
 /* istanbul ignore next */
 export const startServer = () => {
-  const port = process.env.PORT || 8080;
-
   setupEnvVariables();
+  
+  const port = process.env.PORT || 8080;
 
   const app = express();
 
@@ -27,6 +27,10 @@ export const startServer = () => {
   });
 
   app.get("/", greeting);
+
+  app.get("/greeting", greeting);
+
+  app.get("/greeting/:user", greeting);
 
   app.get("/health", checkHealth);
 };

@@ -6,7 +6,7 @@ describe("Server - Basic unit tests", () => {
     jest.clearAllMocks();
   });
 
-  it("should return a greeting in the response", async () => {
+  it("should return a general greeting in the response when no name is provided", async () => {
     const req = {};
 
     const res = {
@@ -18,6 +18,24 @@ describe("Server - Basic unit tests", () => {
 
     await greeting(req, res);
     expect(res.text).toBe("Hello World!");
+  });
+
+  it("should return a customized greeting in the response when called with a name", async () => {
+    const req = {
+      params: {
+        user: "Carlos"
+      }
+    };
+
+    const res = {
+      text: "",
+      send: function (input) {
+        this.text = input;
+      },
+    };
+
+    await greeting(req, res);
+    expect(res.text).toBe("Hello Carlos!");
   });
 
   it("should return a health check message in the response", async () => {

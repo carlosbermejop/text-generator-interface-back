@@ -1,8 +1,9 @@
 import express from "express";
 import { setupEnvVariables } from "./config/setup.js";
+import cors from "cors";
 
 export const greeting = (req, res) => {
-  res.send(req?.params?.user ? `Hello ${req.params.user}!` : "Hello World!");
+  res.send(req?.params?.user ? `Hello ${req.params.user}!` : "Hi stranger!");
 };
 
 export const checkHealth = (req, res) => {
@@ -11,14 +12,20 @@ export const checkHealth = (req, res) => {
   });
 };
 
+const whitelist = [
+  "http://localhost:3000",
+  "http://carlosbermejop.github.io/text-generator-interface-front/",
+];
+
 /* istanbul ignore next */
 export const startServer = () => {
   setupEnvVariables();
-  
+
   const port = process.env.PORT || 8080;
 
   const app = express();
 
+  app.use(cors({ origin: whitelist }));
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
 
